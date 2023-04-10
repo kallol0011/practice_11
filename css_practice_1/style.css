@@ -53,6 +53,8 @@ body{
 .Navbar .manubutton{
  width: 18%;
  display: none;
+ background: rgba(255, 255, 255,0);
+ border: none;
 
 }
 
@@ -73,6 +75,9 @@ body{
     overflow: hidden;
 }
 
+.image{
+    width: 57%;
+}
 .open{
     height: 18rem;
     backdrop-filter: blur(15px);
