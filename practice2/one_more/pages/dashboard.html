@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+
+
+    <title>Dashboard</title>
+</head>
+
+
+<body>
+
+    <div class="mainbox">
+
+        <div class="navbar">
+            <div class="logo">LOGO</div>
+            <div class="navlinks">
+                <li> <a href="./index.html"> Home </a> </li>
+                <li><a href="./dashboard.html"> Dashboard </a></li>
+                <li><a href="./status.html"> Status </a></li>
+            </div>
+        </div>
+         <div class="toolbar">
+             <select id="filter">
+                 <option value="" disabled selected >select option</option>
+                 <option value="student">Student</option>
+                 <option value="employee">Employee</option>
+                </select>
+
+                <input type="text" placeholder="search" id="search">
+                
+            <select id="sort">
+                <option value="" disabled selected >select option</option>
+                <option value="asc">asc</option>
+                <option value="Desc">Desc</option>
+            </select>
+
+            
+        </div>
+
+        <div class="popup">
+            <!-- <input type="text" placeholder="otp" id="otp" > -->
+            <!-- <button id="verifybtn" > verify </button> -->
+        </div>
+
+        <div class="tablebox">
+            <table action="" id="table" >
+                 <thead>
+                    <tr>
+                        <td>userId</td>
+                        <td>name</td>
+                        <td>reason</td>
+                        <td>designation</td>
+                        <td>start date</td>
+                        <td>end date</td>
+                        <td>days</td>
+                        <td>overser</td>
+                        <td>otp</td>
+                        <td>reject</td>
+                        <td>granted</td>
+                        <td>status</td>
+                    </tr>
+                 </thead>
+                 <tbody>
+
+                 </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</body>
+<script src="../scripts/dashboaed.js"></script>
+</html>

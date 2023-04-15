@@ -1,0 +1,127 @@
+
+body{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    width: 100%;
+    background-image: linear-gradient(to right,#2193b0 , #6dd5ed);
+}
+
+
+.mainbox{
+    width: 100%;
+    height: 100%;
+}
+
+.navbar{
+    height: 21%;
+    width: 100%;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0rem;
+    /* gap: 2rem; */
+}
+
+
+.navbar .logo{
+    flex-basis: 31%;
+    margin-left: 9%;
+    font-size: 1.4rem;
+}
+
+.navbar .navlinks{
+    display:flex;
+    justify-content: space-between;
+    margin-right: 7%;
+    flex-basis: 21%;
+
+}
+
+.navlinks>li{
+    list-style:none;
+    font-size: 1.2rem;
+}
+
+.navlinks>li>a{
+    text-decoration: none;
+    color: rgb(59, 57, 57);
+}
+
+.logo:hover{
+    list-style:none;
+    scale: 1.05;
+    color: #219fbc;
+
+}
+.navlinks>li>a:hover{
+    list-style:none;
+    scale: 1.05;
+    color: #219fbc;
+
+}
+.navlinks>li:hover{
+    list-style:none;
+    scale: 1.05;
+    transition: 5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* text-decoration: underline; */
+    
+    color: #219fbc;
+
+}
+
+.formbox{
+    height: 92vh;
+    width: 100%;
+    
+    /* background-color: aliceblue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formbox #form{
+    /* display: flex; */
+    /* background-color:antiquewhite; */
+    background-color: rgba(255,255,255,0.5);
+
+    backdrop-filter:blur(11px);
+    display:grid ;
+    gap: 0vh;
+    width: 21%;
+    padding: 1.7rem;
+    border-radius: 18px;
+    transition: 3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+#form>input,input,select{
+    padding:0.7rem;
+    /* border-radius: 4px; */
+    border: none;
+    background-color: rgba(255,255,255,0);
+    /* border: 0px 0px 0px 2px; */
+    border-bottom: 1px solid #000;
+    
+}
+
+
+#form>input,input::placeholder{
+    color: #000;
+}
+
+#form #submitbtn{
+   /* background: royalblue; */
+   background-image: linear-gradient(to right,#2193b0 , #6dd5ed);
+   padding: 0.6rem 0px;
+   color: white;
+   font-size: 1.2rem;
+   border-radius: 18px;
+   border: none;
+}
+
+#form #submitbtn:hover{
+    background-image: linear-gradient(to right,#6dd5ed , #2193b0);
+    scale: 1.01;
+
+}

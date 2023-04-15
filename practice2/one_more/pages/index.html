@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="../styles/index.css">
+    <title>data managment</title>
+</head>
+
+
+<body>
+     
+    <div class="mainbox">
+
+        <div class="navbar">
+            <div class="logo">LOGO</div>
+            <div class="navlinks">
+                <li> <a href="./index.html"> Home </a> </li>
+                <li><a href="./dashboard.html"> Dashboard </a></li>
+                <li><a href="./status.html"> Status </a></li>
+            </div>
+        </div>
+         
+        <div class="formbox">
+            <form action="" id="form" >
+                <input id="name" required type="text" placeholder="name" >
+                <br/>
+                <input id="reason" required type="text" placeholder="reason" >
+                <br/>
+                <!-- <input id="designation" required type="text" placeholder="designation" > -->
+                <select id="designation">
+                  <option value="" disabled selected >select one</option>
+                  <option value="student" >student</option>
+                  <option value="employee" >employee</option>
+                </select>
+
+                <!-- <label>Role:</label>
+                <input type="radio" id="student" name="role" value="student">
+                <label for="student">Student</label>
+                <input type="radio" id="employee" name="role" value="employee">
+                <label for="employee">Employee</label> -->
+                
+
+                
+
+                <br/>
+                <input id="start" required type="date" placeholder="start date" >
+                <br/>
+                <input id="end" required type="date" placeholder="end date" >
+                <br/>
+                <!-- <input id="overser" required type="text" placeholder="overser" > -->
+                <select id="overser">
+                    <option value="" disabled selected >select one</option>
+                    <option value="EC" >EC</option>
+                    <option value="HR" >HR</option>
+                    <option value="Manager" >Manager</option>
+                  </select>
+                 <br/>
+                <input id="submitbtn" type="submit" />
+            </form>
+        </div>
+
+
+    </div>
+    </body>
+
+<script src="../scripts/index.js"></script>
+    
+</html>
