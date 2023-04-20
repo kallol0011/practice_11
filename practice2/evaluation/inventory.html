@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #products_data{
+        /* border:2px solid red; */
+        margin: auto;
+        height: 500px;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap:15px;
+      }
+      #products_data>div{
+
+        /* border: 1px solid green; */
+        text-align: center;
+        padding: 5px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+      }
+      img{
+        width: 100%;
+      }
+
+      button{
+        width: 50%;
+        padding: 7px;
+        margin-bottom: 11px;
+        color: white;
+        background-color: royalblue;
+        border: none;
+        border-radius: 5px;
+      }
+
+    
+
+      p{
+        margin-top: 0%;
+        margin-bottom: 2%;
+        font-size:20px;
+      }
+      h2{
+        margin-top: 0%;
+        margin-bottom: 2%;
+      }
+      #menu>button{
+
+        width: 10%;
+
+      }
+      a{
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+      }
+
+      button:hover{
+        background-color: rgb(126, 169, 255);
+      }
+
+
+    </style>
+  </head>
+
+  <style></style>
+
+  <body>
+    <div id="menu">
+      <button id="add_product">
+        <a href="index.html">Add Product</a>
+      </button>
+      <!-- Create Add Product button here, give id as "add_product". avoid making spelling mistakes in HTML id's -->
+    </div > 
+    <div id="products_data">
+      <!--append all products data here in grid format-->
+    </div>
+  </body>
+</html>
+
+<!-- id="products_data" -->
+
+<script src="inventory.js">
+  
+</script>

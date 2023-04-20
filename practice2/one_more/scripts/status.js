@@ -1,6 +1,6 @@
 
 var table=document.querySelector("#table")
-
+var datafilter=document.querySelector("#selecttag")
 
 let formdata=JSON.parse(localStorage.getItem("FormData2"))
 
@@ -9,10 +9,32 @@ append(formdata)
 
 
 
+/////// filter //////
+
+datafilter.addEventListener("change",function(){
+    var filterdata;
+    if(datafilter.value==="all")
+    {
+        filterdata=formdata.filter((el)=>{
+            return el.status
+        })
+    }
+    
+    else
+    {
+        filterdata=formdata.filter((el)=>{
+            return el.status===datafilter.value
+        })
+    }
+    
+    console.log(filterdata)
+    append(filterdata)
+
+})
 
 
 
-
+/////////////////////
 
 
 function append(data){
@@ -57,23 +79,38 @@ data?.map((el,index)=>{
     
         let td18=document.createElement("td")
         td18.innerText=el.status;
+        td18.style.color="white";
+
     
-        let td11=document.createElement("td")
-        let rejectbtn=document.createElement("button")
-        rejectbtn.innerText="reject";
-        rejectbtn.style.color="red";
-        rejectbtn.addEventListener("click",function(){
+        if(el.status==="granted")
+        {
+            td18.style.backgroundColor="green"
+        }
+        else if(el.status==="reject")
+        {
+            td18.style.backgroundColor="red"
+        }
+        else
+        {
+            td18.style.backgroundColor="black"
+        }
+
+        // let td11=document.createElement("td")
+        // let rejectbtn=document.createElement("button")
+        // rejectbtn.innerText="reject";
+        // rejectbtn.style.color="red";
+        // rejectbtn.addEventListener("click",function(){
      
-            reject(index) 
-        }) 
-        td11.append(rejectbtn)
+        //     reject(index) 
+        // }) 
+        // td11.append(rejectbtn)
     
     
-        let td12=document.createElement("td")
-        let grantedbtn=document.createElement("button")
-        grantedbtn.innerText="granted";
-        grantedbtn.style.color="green";
-        td12.append(grantedbtn)
+        // let td12=document.createElement("td")
+        // let grantedbtn=document.createElement("button")
+        // grantedbtn.innerText="granted";
+        // grantedbtn.style.color="green";
+        // td12.append(grantedbtn)
     
          
     

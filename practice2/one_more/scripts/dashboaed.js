@@ -7,6 +7,7 @@ var verifybtn = document.querySelector("#verifybtn")
 let formdata=JSON.parse(localStorage.getItem("FormData2"))
 
 console.log(formdata)
+
 append(formdata)
 
 
@@ -16,6 +17,7 @@ let search=document.querySelector("#search")
 
 search.addEventListener("change",function(){
     let searchdata=formdata.filter((el)=>{
+        
         return el.name.toLowerCase().includes(search.value)
     })
     console.log(searchdata)
@@ -48,12 +50,12 @@ sorting.addEventListener("change",function(){
 
 ////// filter //////
 
-let filtering=document.querySelector("#filter")
+let datafilter=document.querySelector("#filter")
 
-filtering.addEventListener("change",function(){
+datafilter.addEventListener("change",function(){
 
     let filterdata=formdata.filter((el)=>{
-        return el.designation===filtering.value
+        return el.designation===datafilter.value
     })
 
     console.log(filterdata)
@@ -64,13 +66,13 @@ filtering.addEventListener("change",function(){
 
 
 
-
+/////// append ///////
 
 function append(data){
 
     document.querySelector("tbody").innerHTML=null;
 
-data?.map((el,index)=>{
+    data?.map((el,index)=>{
 
     // create tag and put el.(data) on it //
 
@@ -112,7 +114,8 @@ data?.map((el,index)=>{
         let td11=document.createElement("td")
         let rejectbtn=document.createElement("button")
         rejectbtn.innerText="reject";
-        rejectbtn.style.color="red";
+        rejectbtn.style.backgroundColor="red";
+        rejectbtn.style.color="white";
         rejectbtn.addEventListener("click",function(){
      
             reject(index) 
@@ -123,15 +126,19 @@ data?.map((el,index)=>{
         let td12=document.createElement("td")
         let grantedbtn=document.createElement("button")
         grantedbtn.innerText="granted";
-        grantedbtn.style.color="green";
+        grantedbtn.style.backgroundColor ="green";
+        grantedbtn.style.color ="white";
         grantedbtn.addEventListener("click",function(){
 
-          /////////////
+          ///////////// 
+
+          popdiv.innerHTML=null;
 
             let d5=document.createElement("h3")
         d5.innerText= `test : ${el.name}`;
         d5.classList.add("name");
-            let d1=document.createElement("h3")
+
+        let d1=document.createElement("h3")
         d1.innerText= `test :  ${el.start}`;
         d5.classList.add("start");
     
@@ -159,6 +166,7 @@ data?.map((el,index)=>{
             }
             else
             {
+                alert(`otp ${inp.value} is not matched`)
                 console.log("not matched")
             }
         })
@@ -190,13 +198,10 @@ function granted(index){
    let seconddata = formdata.filter((el,i)=>{
         if(i===index)
         {
-            // var modified=JOSN.parse(localStorage.getItem("modify"))||[];
          if(el.status==="pending")
          {
           return  el.status="granted"
          }
-        //    modified.push(el)
-        //    localStorage.setItem("modify",JSON.stringify(modified))
         }
         else
         {
@@ -219,13 +224,10 @@ function reject(index){
    let seconddata = formdata.filter((el,i)=>{
         if(i===index)
         {
-            // var modified=JOSN.parse(localStorage.getItem("modify"))||[];
          if(el.status==="pending")
          {
           return  el.status="reject"
          }
-        //    modified.push(el)
-        //    localStorage.setItem("modify",JSON.stringify(modified))
         }
         else
         {
@@ -236,8 +238,6 @@ function reject(index){
     alert(`${index+1}th row data is deleted`)
 
     localStorage.setItem("FormData2",JSON.stringify(seconddata))
-//    console.log(seconddata)
-    // console.log(newdata)
 
 location.reload()
 

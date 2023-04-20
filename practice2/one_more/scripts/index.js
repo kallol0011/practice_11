@@ -6,11 +6,24 @@ let form=document.querySelector("#form")
 form.addEventListener("submit",function(event){
     event.preventDefault();
 
-    let name=document.querySelector("#name").value
-let reason=document.querySelector("#reason").value
-let designation=document.querySelector("#designation").value
+    const statusButtons = document.getElementsByName("status");
+   
+    let designation;
+for (let i = 0; i < statusButtons.length; i++) {
+  if (statusButtons[i].checked) {
+    const selectedStatus = statusButtons[i].value;
+    console.log(selectedStatus);
+    designation=selectedStatus
 
-// let designation=document.querySelector('input[name="role"]').value
+    break; 
+  }
+}
+
+let name=document.querySelector("#name").value
+
+let reason=document.querySelector("#reason").value
+// let designation=document.querySelector("#designation").value
+
 let start=document.querySelector("#start").value
 let end=document.querySelector("#end").value
 let overser=document.querySelector("#overser").value
@@ -23,19 +36,7 @@ let submitbtn=document.querySelector("#submitbtn").value
   let difftime=Math.abs(startDay - endDay)
   let diffDate=Math.ceil(difftime/(1000*60*60*24))
    
-//   console.log(designation)
 
-
-//   let role;
-//   for (const radioButton of designation) {
-//     if (radioButton.checked) {
-//       role = radioButton.value;
-//       break;
-//     }
-//   }
-
-
-//   console.log(role)
 
 ////////// form condition /////////////
  
@@ -84,6 +85,8 @@ let submitbtn=document.querySelector("#submitbtn").value
         status:"pending"
     }
 
+    console.log(dataobj)
+
   
     let dataarr=JSON.parse(localStorage.getItem("FormData2"))||[]
     dataarr.push(dataobj)
@@ -96,4 +99,6 @@ let submitbtn=document.querySelector("#submitbtn").value
   
 
     // console.log(dataobj)
+    form.reset();
+    
 })

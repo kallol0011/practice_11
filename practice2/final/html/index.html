@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <div class="navbar">
+        <li><a href="index.html">home</a></li>
+        <li><a href="dashboaed.html">daashboard</a></li>
+    </div>
+
+    <div class="formbox">
+        <form>
+            <input type="text" id="name"  placeholder="name"  minlength="4" />
+                <input type="text" id="reason"  placeholder="reason"  />
+                <!-- <select id="designation"  > -->
+                    <!-- <label>overser</label>
+                    <option value="" disabled selected>--Please choose an option--</option>
+                    <option value="Employee">Employee</option>
+                    <option value="Student">Student</option>
+                 </select> -->
+
+                 <label>
+                    <input type="radio" name="status" value="student">
+                    Student
+                  </label>
+                  <label>
+                    <input type="radio" name="status" value="employee">
+                    Employee
+                  </label>
+                  
+
+                <input type="date" id="start"  placeholder="start"  />
+                <input type="date" id="end"  placeholder="end"  />
+                <select id="overser" placeholder="overser"  >
+                   <label>overser</label>
+                   <option value="" disabled selected>--Please choose an option--</option>
+                   <option value="EC">EC</option>
+                   <option value="HR">HR</option>
+                   <option value="Manager">Manager</option>
+                </select>
+                <input type="submit" id="apply" />
+        </form>
+    </div>
+    
+</body>
+<script src="../js/index.js"></script>
+</html>
