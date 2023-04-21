@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div>
+        <li><a href="./index.html"> HOME </a></li>
+        <li><a href="./Hotel.html"> HOTEL </a></li>
+        <li><a href="./Admin.html"> ADMIN </a></li>
+    </div>
+
+    <form id="form" >
+        <br><input type="text" placeholder="email" id="Category" ><br>
+        <input type="text" placeholder="password" id="Image" ><br>
+        <br><input type="text" placeholder="email" id="Type" ><br>
+        <input type="text" placeholder="password" id="person" ><br>
+        <br><input type="text" placeholder="email" id="capacity" ><br>
+        <input type="text" placeholder="password" id="cost" ><br>
+        
+        <input type="submit" id="submitbtn"/>
+
+    </form>
+
+
+    <div class="popup">
+
+    </div>
+
+
+    <div class="cards">
+
+        
+    </div>
+
+
+    
+
+    
+
+
+</body>
+
+<script>
+
+
+
+let form=document.querySelector("#form")
+let popup=document.querySelector(".popup")
+
+
+
+form.addEventListener("submit",function(event){
+
+event.preventDefault()
+
+let category=document.querySelector("#Category").value
+let Image=document.querySelector("#Image").value
+let Type=document.querySelector("#Type").value
+let person=document.querySelector("#person").value
+let capacity=document.querySelector("#capacity").value
+let cost=document.querySelector("#cost").value
+
+
+    let dataobj={
+        
+
+
+        
+category:category,
+image_url:Image,
+type_of_room:Type,
+
+no_of_persons:person,
+capacity:capacity,
+cost:cost,
+booked:false
+
+    }
+
+
+
+
+    console.log(dataobj)
+
+    postData(dataobj)
+
+})
+
+
+ 
+
+ var cards=document.querySelector(".cards")
+
+ // get data and show it in a table form ////
+ const fetchData=async()=>{
+
+   let res=await fetch(`http://localhost:5000/datas`)
+   let data=await res.json()
+
+   return data
+
+ }
+
+
+
+ const append=(data)=>{
+
+  
+data?.map((el)=>{
+
+    var div=document.createElement("div")
+
+let image_url=document.createElement("img")
+    image_url.src=` ${el.image_url}`
+
+
+
+    let category=document.createElement("h3")
+    category.innerText=`Team name : ${el.category}`
+
+    
+
+    let type_of_room=document.createElement("p")
+    type_of_room.innerText=`type_of_room : ${el.type_of_room}`
+
+    let no_of_persons=document.createElement("p")
+    no_of_persons.innerText=`no_of_persons : ${el.no_of_persons}`
+
+    let capacity=document.createElement("p")
+    capacity.innerText=`capacity : ${el.capacity}`
+
+    let cost=document.createElement("p")
+    cost.innerText=`cost : ${el.cost}`
+    
+    let booked=document.createElement("p")
+    booked.innerText=`booked : ${el.booked}`
+    
+    let button=document.createElement("button")
+    button.innerText=`EDIT`
+    
+    button.addEventListener("click",function(){
+       
+        
+
+        let inp1=document.createElement("input")
+        
+        let inp2=document.createElement("input")
+        let inp3=document.createElement("input")
+        let inp4=document.createElement("input")
+        let inp5=document.createElement("input")
+        let updatebutton=document.createElement("button")
+        updatebutton.innerText="update"
+        updatebutton.addEventListener("click",function(){
+            let detailobj={
+                capacity:inp1.value===""?(el.capacity):(inp1.value),
+                category:inp2.value===""?(el.category):(inp2.value),
+                type_of_room:inp3.value===""?(el.type_of_room):(inp3.value),
+                no_of_persons:inp4.value===""?(el.no_of_persons):(inp4.value),
+                cost:inp5.value===""?(el.cost):(inp5.value),
+            }
+            // console.log(detailobj)
+
+
+            EDITdata(el.id,detailobj,el)
+
+
+        })
+    
+
+        popup.append(inp1,
+                    inp2,
+                    inp3,
+                    inp4,
+                    inp5,
+                    updatebutton
+                    )
+
+    })
+
+    let deletebutton=document.createElement("button")
+    deletebutton.innerText=`DELETE`
+    
+    deletebutton.addEventListener("click",function(){
+       
+        deleteData(el.id)
+        
+    })
+
+
+    div.append(image_url,category,
+    type_of_room,
+    no_of_persons,
+    capacity,
+    cost,
+    booked,
+    button,
+    deletebutton
+    )
+
+    cards.append(div)
+
+
+})
+
+
+}
+
+
+
+
+
+ const getData=async()=>{
+
+    var alldata=await fetchData()
+
+    console.log(alldata)
+    append(alldata)
+
+ }
+
+ getData()
+
+
+
+
+ /// post req to create new data //// 
+ 
+ 
+ const postData=async(details)=>{
+
+const response = await fetch(`http://localhost:5000/datas`, {
+method: 'POST',
+headers: {
+  'Content-Type': 'application/json'
+},
+body: JSON.stringify({...details,booked:false})
+});
+let data=await response.json();
+
+console.log(data)
+
+}
+
+
+ /// update data /////
+
+ const EDITdata=async(id,changes,details)=>{
+
+
+    const response = await fetch(`http://localhost:5000/datas/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(changes)
+  });
+  let data=await response.json();
+
+  console.log("details",changes)
+
+ }
+ //// delete data /////
+
+ const deleteData=async(id)=>{
+
+    const response = await fetch(`http://localhost:5000/datas/${id}`, {
+    method: 'DELETE',
+    
+  });
+  let data=await response.json();
+
+  console.log(data)
+
+ }
+
+
+
+
+</script>
+
+</html>

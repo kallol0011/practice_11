@@ -1,0 +1,44 @@
+{
+  "datas": [
+    {
+      "capacity": "11",
+      "category": "Family",
+      "type_of_room": "AC",
+      "no_of_persons": "2",
+      "cost": "123445",
+      "id": 3,
+      "booked": true
+    },
+    {
+      "id": 4,
+      "category": "Family",
+      "image_url": "https://www.acaciahotelsmanila.com/wp-content/uploads/2020/09/room-deluxe_70df34c103b85ce7b2b5ff918ab8cf72.jpg",
+      "type_of_room": "AC",
+      "bed_type": "Double",
+      "no_of_persons": "2",
+      "capacity": "3",
+      "cost": "4000",
+      "booked": true
+    },
+    {
+      "id": 6,
+      "category": "friend",
+      "image_url": "https://www.freecodecamp.org/news/content/images/size/w2000/2022/09/jonatan-pie-3l3RwQdHRHg-unsplash.jpg",
+      "type_of_room": "AC",
+      "no_of_persons": "2",
+      "capacity": 2,
+      "cost": "100000",
+      "booked": true
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

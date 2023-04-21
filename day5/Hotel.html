@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+  img{
+    width: 124px;
+  }
+
+  .cards{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-content: space-between;
+    align-items: center;
+    
+    gap: 21px;
+    margin: auto;
+  }
+
+    </style>
+     
+
+
+</head>
+<body>
+    
+    <div>
+        <li><a href="./index.html"> HOME </a></li>
+        <li><a href="./Hotel.html"> HOTEL </a></li>
+        <li><a href="./Admin.html"> ADMIN </a></li>
+    </div>
+
+    <div class="cards">
+
+    </div>
+
+</body>
+
+<script>
+
+/// get data ///
+
+
+
+var cards=document.querySelector(".cards")
+
+const fetchData=async()=>{
+
+    let res=await fetch(`http://localhost:5000/datas`)
+    let data=await res.json()
+    
+   return data;
+
+}
+
+fetchData()
+
+
+const append=(data)=>{
+
+  
+    data?.map((el)=>{
+
+        var div=document.createElement("div")
+
+    let image_url=document.createElement("img")
+        image_url.src=` ${el.image_url}`
+
+
+
+        let category=document.createElement("h3")
+        category.innerText=`Team name : ${el.category}`
+
+        
+
+        let type_of_room=document.createElement("p")
+        type_of_room.innerText=`type_of_room : ${el.type_of_room}`
+
+        let no_of_persons=document.createElement("p")
+        no_of_persons.innerText=`no_of_persons : ${el.no_of_persons}`
+
+        let capacity=document.createElement("p")
+        capacity.innerText=`capacity : ${el.capacity}`
+
+        let cost=document.createElement("p")
+        cost.innerText=`cost : ${el.cost}`
+        
+        let booked=document.createElement("p")
+        booked.innerText=`booked : ${el.booked}`
+        
+        let button=document.createElement("button")
+        button.innerText=`book now`
+        if(el.booked===true)
+        {
+            button.disabled=true;
+        }
+        button.addEventListener("click",function(){
+            // post req and change booked data //
+            
+            postdata(el.id,el)
+            
+            
+
+
+        })
+
+
+        div.append(image_url,category,
+        type_of_room,
+        no_of_persons,
+        capacity,
+        cost,
+        booked,
+        button
+        )
+
+        cards.append(div)
+
+
+    })
+    
+
+}
+
+
+const getData=async()=>{
+
+    let alldata=await fetchData()
+
+    console.log(alldata)
+
+    append(alldata)
+
+}
+
+getData()
+
+
+
+const postdata=async(id,details)=>{
+
+    /// delete ///
+
+//   const response = await fetch(`http://localhost:5000/datas/${id}`, {
+//     method: 'DELETE',
+//   });
+//   let data=await response.json();
+
+//   console.log(data)
+
+
+////// post //////
+
+
+// const response = await fetch(`http://localhost:5000/datas`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(data)
+//   });
+//   let data=await response.json();
+
+//   console.log(data)
+ 
+
+//// put /////
+
+// const response = await fetch(`http://localhost:5000/datas/${id}`, {
+//     method: 'PUT',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({booked:true})
+//   });
+//   let data=await response.json();
+
+//   console.log(data)
+
+
+const response = await fetch(`http://localhost:5000/datas/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({...details,booked:true})
+  });
+  let data=await response.json();
+
+  console.log(data)
+
+
+
+}
+
+
+
+// filter ///
+
+
+
+
+
+
+//// sort //////
+
+</script>
+
+</html>

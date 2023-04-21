@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+
+*{
+	box-sizing: border-box;
+}
+body{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	height: 100vh;
+	width: 98vw;
+}
+.form{
+	height: auto;
+	width: 400px;
+	padding: 0px 0px 15px 0px;
+	border: 2px solid rgb(0, 255, 170);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	/* background-color: rgb(1, 0, 22); */
+}
+
+.buttons{
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	justify-content: space-around;
+	height: 50px;
+	float: left;
+}
+.buttons .btn{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 25px;
+	width: 50%;
+	cursor: pointer;
+}
+
+
+#chbox:checked ~ .SignUp_form{
+	display: flex;
+}
+
+#chbox:checked ~ .login_form{
+	display: none;
+}
+
+#chbox:checked + .layer{
+	left: 50%;
+}
+#chbox:checked ~ .layer2{
+	left: 50%;
+}
+#chbox{
+	display: none;
+}
+
+
+.layer{
+	content: '';
+	height: 50px;
+	width: 50%;
+	background-color: transparent;
+	float: right;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.layer2{
+	content: '';
+	height: 50px;
+	z-index: -1;
+	width: 50%;
+	background-color: rgb(0, 255, 170);
+	float: right;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+/* LOGIN FORM */
+
+	.form .login_form{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.form .login_form input{
+		border: none;
+		border-bottom: 1px solid black;
+		outline: none;
+		padding: 5px;
+	}
+
+	hr{
+		height: 5px;
+		background-color: black;
+		width: 320px;
+		margin: 15px -20px 5px -20px;
+	}
+
+	.tag{
+		text-align: center;
+		font-size: 20px;
+		margin: 7px 0px 7px 0px;
+
+		/* margin: auto; */
+	}
+	.icons{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.fa {
+		padding: 20px;
+		border-radius: 100%;
+		font-size: 20px;
+		text-align: center;
+		text-decoration: none;
+		margin: 2px 2px;
+	}
+	
+	.fa-facebook {
+		background: #3B5998;
+		color: white;
+	}
+	
+	.fa-twitter {
+		background: #55ACEE;
+		color: white;
+		font-size: 10px;
+
+	}
+	
+	.fa-google {
+		background: #dd4b39;
+		color: white;
+	}
+	
+	.fa-linkedin {
+		background: #007bb5;
+		color: white;
+	}
+
+	.submit{
+		width: 70px;
+		border: none;
+		padding: 7px;
+		border-radius: 5px;
+		background-color: cadetblue;
+		outline: none;
+		cursor: pointer;
+	}
+	/* Login info end */
+
+
+	/* Sign Up form */
+
+.form .SignUp_form{
+	display: none;
+	flex-direction: column;
+}
+
+.form .SignUp_form input{
+	border: none;
+	border-bottom: 1px solid black;
+	outline: none;
+	padding: 5px;
+	margin: 0px;
+}
+
+
+    </style>
+
+
+</head>
+<body>
+    
+
+    <div>
+        <li><a href="./index.html"> HOME </a></li>
+        <li><a href="./Hotel.html"> HOTEL </a></li>
+        <li><a href="./Admin.html"> ADMIN </a></li>
+    </div>
+
+    <div class="form">
+
+		<div class="buttons">
+			<label for="chbox" class="login btn"><span>Login</span></label>
+			<label for="chbox" class="SignUp btn"><span>SignUp</span></label>
+		</div>
+
+		<input type="checkbox" id="chbox">	
+		<div class="layer"></div>
+		<div class="layer2"></div>
+
+        <!-- login -->
+
+		<div class="login_form">
+            <form id="login_form" >
+			<br><input type="text" placeholder="email" id="login_email" ><br>
+			<input type="password" placeholder="password" id="login_password" ><br>
+            <input type="submit" id="login_btn"/>
+
+        </form>
+			
+		</div>
+
+        <!-- signup -->
+
+		<div class="SignUp_form">
+            <form id="signup_form" >
+			<br><input type="text" placeholder="Name" id="name"><br>
+			<input type="email" placeholder="E-Mail" id="email" ><br>
+			<input type="password" placeholder="password" id="password" ><br>
+			<input type="password" placeholder="re_password" id="re_password" ><br>
+            <input type="submit" id="signup_btn"/>
+        </form>
+			<!-- <button id="signup_submit">Submit</button> -->
+			<hr>
+			<!-- <button class="tag" >or Signup using</button> -->
+          
+		</div>
+
+        <!-- <div>
+            <form id="signup_form" >
+            <input type="text" name="" id="name"/>
+            <input type="text" name="" id="email"/>
+            <input type="text" name="" id="password"/>
+            <input type="text" name="" id="re_password"/>
+            <input type="submit" id="signup_btn"/>
+           </form>
+        </div> -->
+
+	</div>
+
+
+</body>
+
+<script>
+
+
+
+let form=document.querySelector("#signup_form")
+
+
+
+form.addEventListener("submit",function(event){
+
+event.preventDefault()
+
+let username=document.querySelector("#name").value
+let email=document.querySelector("#email").value
+let password=document.querySelector("#password").value
+let reg_re_password=document.querySelector("#re_password").value
+
+
+    let dataobj={
+        username,
+        email,
+        password,
+        // reg_re_password
+    }
+
+    console.log(dataobj)
+
+    postData(dataobj)
+
+})
+ 
+
+async function postData(data) {
+  const response = await fetch(`https://reqres.in/api/register`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+  let res_data=await response.json();
+  console.log(res_data)
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+
+let form2 = document.querySelector("#login_form")
+
+form2.addEventListener("submit",function(event){
+
+event.preventDefault()
+
+let email=document.querySelector("#login_email").value
+let password=document.querySelector("#login_password").value
+
+
+    let dataobj={
+        email,
+        password,
+    }
+
+    console.log(dataobj)
+
+    postDatalogin(dataobj)
+
+})
+
+async function postDatalogin(data) {
+  const response = await fetch(`https://reqres.in/api/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+  let res_data=await response.json();
+  console.log(res_data)
+}
+
+
+
+</script>
+
+</html>
